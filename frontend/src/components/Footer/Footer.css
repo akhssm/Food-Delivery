@@ -12,7 +12,7 @@
 .footer-content{
     width: 100%;
     display: grid;
-    grid-template-columns: 2rf 1rf 1rf;
+    grid-template-columns: 2fr 1fr 1fr;
     gap: 80px;
 }
 .footer-content-left, .footer-content-right, .footer-content-center{
