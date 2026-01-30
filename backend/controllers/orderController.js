@@ -11,13 +11,13 @@ const placeOrder = async (req, res) => {
 
     try {
         const newOrder = new orderModel({
-            userId: req.user.userId,
+            userId: req.userId,
             items: req.body.items,
             amount: req.body.amount,
             address: req.body.address
         })
         await newOrder.save();
-        await userModel.findByIdAndUpdate(req.user.userId, { cartData: {} });
+        await userModel.findByIdAndUpdate(req.userId, { cartData: {} });
 
         const line_items = req.body.items.map((item)=>({
             price_data:{
@@ -78,7 +78,7 @@ const verifyOrder = async (req, res) => {
 
 const userOrders = async (req, res) => {
     try {
-        const orders = await orderModel.find({userId:req.user.userId});
+        const orders = await orderModel.find({userId:req.userId});
         res.json({success: true, data: orders})
     } catch (error) {
         console.log(error);
